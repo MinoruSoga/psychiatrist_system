@@ -1,0 +1,16 @@
+<%= form_with(model: @patients, local: true) do |f| %>
+  <div>患者名</div>
+  <div><%= f.text_field :patient_name %></div>
+  <div>年齢</div>
+  <div><%= f.number_field :age %></div>
+  <div>性別</div>
+  <%= f.radio_button :gender, :male %>
+  <%= f.label :gender, "男性", {value: :male, style: "display: inline-block;"} %>
+  <%= f.radio_button :gender, :female %>
+  <%= f.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
+  <div>誕生日</div>
+  <div><%= f.date_select :birthday, {
+          start_year:     1900,
+          end_year:       (Time.zone.now.year)} %></div>
+  <div><%= f.submit %></div>
+<% end %>

@@ -1,0 +1,47 @@
+<div class="container">
+<% @questions_plus.each do |question_plus|%>
+  <% $num_plus = question_plus.question_id %>
+<% end %>
+  
+<% $num = 1 %>
+  <%= form_with(model: @check_sheets, local: true) do |f| %>
+    <%= f.hidden_field :disease_id, value: @diseases.id %>
+    <%= f.hidden_field :patient_id, value: @patients.id %>
+    <% @questions.each do |question| %>
+      <div class="row border py-2">
+        <div class="col-8">
+          <%= question.question_name %>
+        </div>
+        <div class="col-2">
+          <input type="radio" value="Yes" name="q_<%= $num %>" id="q_<%= $num %>_yes">
+          <label style="display: inline-block;" for="q_<%= $num %>_yes">はい</label>
+        </div>
+        <div class="col-2">
+          <input type="radio" value="No" name="q_<%= $num %>" id="q_<%= $num %>_no">
+          <label style="display: inline-block;" for="q_<%= $num %>_yes">いいえ</label>
+        </div>
+        <% $num = $num + 1 %>
+      </div>
+      <% if $num_plus == question.id %>
+        <% @questions_plus.each do |question_plus| %>
+        <div class="row border py-2 ml-5">
+        <div class="col-8">
+          <%= question_plus.question_name %>
+        </div>
+        <div class="col-2">
+          <input type="radio" value="Yes" name="q_<%= $num %>" id="q_<%= $num %>_yes">
+          <label style="display: inline-block;" for="q_<%= $num %>_yes">はい</label>
+        </div>
+        <div class="col-2">
+          <input type="radio" value="No" name="q_<%= $num %>" id="q_<%= $num %>_no">
+          <label style="display: inline-block;" for="q_<%= $num %>_yes">いいえ</label>
+        </div>
+        <% $num = $num + 1 %>
+      </div>
+      <% end %>
+    <% end %>
+
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+</div>

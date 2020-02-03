@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar navbar-light bg-light">
+  <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">一覧</a>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'カルテ作成', check_sheets_path, {class: "nav-link"} %>
+  </li>
+  <li class="nav-item">
+    <%= link_to '患者名登録', patients_path, {class: "nav-link"} %>
+  </li>
+</ul>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">ログイン/ログアウト</a>
+</nav>
+</header>

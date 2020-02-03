@@ -1,0 +1,2 @@
+class CheckSheet < ApplicationRecord
+end

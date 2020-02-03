@@ -1,0 +1,18 @@
+<div class="container">
+
+  <h1>check_sheet</h1>
+  <%
+=begin%>
+ <%= form_tag new_check_sheet_path, method: :get, enforce_utf8: false do %>
+  <%= text_field_tag 'q' %>
+  <%= submit_tag %>
+  <% end %> 
+<%
+=end%>
+<%= form_with url: new_check_sheet_path, method: :get, local: true do |f| %>
+  <%= f.collection_select :patient_id, Patient.all, :id, :patient_name %>
+  <%= f.collection_select :disease_id, Disease.all, :id, :disease_name %>
+  <%= f.submit %>
+<% end %>
+</div>
+
